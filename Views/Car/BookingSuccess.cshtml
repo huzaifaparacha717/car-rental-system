@@ -1,0 +1,27 @@
+﻿@model car_rental_system.Models.Booking
+
+<div class="container mt-5">
+    <div class="card shadow border-0">
+        <div class="card-body text-center p-5">
+            <div class="mb-4">
+                <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+            </div>
+            <h2 class="display-4 text-success">Booking Confirmed!</h2>
+            <p class="lead">Thank you, <strong>@Model.CustomerName</strong>. Your ride is ready!</p>
+            
+            <hr />
+            
+            <div class="row mt-4">
+                <div class="col-6 text-end text-muted">Car:</div>
+                <div class="col-6 text-start"><strong>@Model.CarName</strong></div>
+                
+                <div class="col-6 text-end text-muted">Total Rent:</div>
+                <div class="col-6 text-start text-primary"><strong>Rs. @Model.TotalRent</strong></div>
+            </div>
+
+            <div class="mt-5">
+                <a asp-action="Index" class="btn btn-outline-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>

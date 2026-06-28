@@ -1,0 +1,24 @@
+@model car_rental_system.Models.car
+@{
+    ViewData["Title"] = "Delete car";
+}
+
+<h1 class="h3 mb-2 text-danger">Delete car</h1>
+<p class="text-muted mb-4">This removes the car from the in-memory fleet list. Customers will no longer see it.</p>
+
+<div class="card border-danger border-2 shadow-sm" style="max-width: 32rem;">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-4">Name</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+            <dt class="col-sm-4">Model</dt>
+            <dd class="col-sm-8">@Model.Model</dd>
+            <dt class="col-sm-4">Id</dt>
+            <dd class="col-sm-8">@Model.Id</dd>
+        </dl>
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="mt-4">
+            <button type="submit" class="btn btn-danger">Delete permanently</button>
+            <a asp-action="Cars" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@model car_rental_system.Models.Booking
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white text-center p-3">
+                    <h3 class="mb-0">Finalize Your Booking</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Book" method="post">
+                        <input type="hidden" asp-for="CarId" />
+                        <input type="hidden" asp-for="CarName" />
+
+                        <div class="mb-4 text-center">
+                            <h5 class="text-muted">Vehicle: <span class="text-dark fw-bold">@Model.CarName</span></h5>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Your Name</label>
+                            <input asp-for="CustomerName" class="form-control" placeholder="Enter full name" required />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Start Date</label>
+                                <input asp-for="StartDate" type="date" class="form-control" required />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">End Date</label>
+                                <input asp-for="EndDate" type="date" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold d-block">Fuel Option</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" asp-for="SelectedFuelType" value="WithFuel" id="fuel1" checked>
+                                <label class="form-check-label" for="fuel1">With Fuel</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" asp-for="SelectedFuelType" value="WithoutFuel" id="fuel2">
+                                <label class="form-check-label" for="fuel2">Without Fuel</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" asp-for="NeedDriver" id="driverCheck">
+                                <label class="form-check-label fw-bold" for="driverCheck">I need a Professional Driver</label>
+                            </div>
+                            <small class="text-muted text-start d-block">Extra charges will apply per day.</small>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg shadow-sm">Confirm & Calculate Rent</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

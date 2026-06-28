@@ -1,0 +1,49 @@
+@model car_rental_system.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Admin login";
+}
+
+<div class="row justify-content-center my-4">
+    <div class="col-md-10 col-lg-8">
+        <div class="card shadow border-0 overflow-hidden">
+            <div class="row g-0">
+                <div class="col-md-5 bg-dark text-white p-4 d-flex flex-column justify-content-center border-end border-warning border-3">
+                    <h2 class="h4 fw-bold mb-3 text-warning"><i class="bi bi-shield-lock-fill me-2"></i>Admin login</h2>
+                    <p class="small opacity-75 mb-4">Sirf <strong>Admin</strong> role wale yahan sign in karein. Customers ke liye alag customer login hai.</p>
+                    <div class="border-top border-secondary pt-3 small">
+                        <p class="mb-2 fw-semibold text-white-50">Demo admin</p>
+                        <p class="mb-0 font-monospace text-break">admin@carrental.com</p>
+                        <p class="mb-3 font-monospace">Admin@@123</p>
+                        <a asp-action="Login" class="btn btn-outline-light btn-sm w-100">Customer login</a>
+                    </div>
+                </div>
+                <div class="col-md-7 bg-white p-4 p-md-5">
+                    <h1 class="h4 mb-4 text-dark">Admin sign in</h1>
+                    <form asp-action="AdminLogin" method="post">
+                        <input type="hidden" asp-for="ReturnUrl" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" autocomplete="username" autofocus />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" class="form-control" autocomplete="current-password" />
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input asp-for="RememberMe" class="form-check-input" />
+                            <label asp-for="RememberMe" class="form-check-label"></label>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 py-2">Admin login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

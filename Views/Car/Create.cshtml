@@ -1,0 +1,62 @@
+﻿@model car_rental_system.Models.car
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>car</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="PriceWithoutFuel" class="control-label"></label>
+                <input asp-for="PriceWithoutFuel" class="form-control" />
+                <span asp-validation-for="PriceWithoutFuel" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="PriceWithFuel" class="control-label"></label>
+                <input asp-for="PriceWithFuel" class="form-control" />
+                <span asp-validation-for="PriceWithFuel" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="DriverCharges" class="control-label"></label>
+                <input asp-for="DriverCharges" class="form-control" />
+                <span asp-validation-for="DriverCharges" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check mb-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsBooked" /> @Html.DisplayNameFor(model => model.IsBooked)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Admin" asp-action="Cars" class="me-2">Back to admin fleet</a>
+    }
+    <a asp-controller="Car" asp-action="Index">Public catalog</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

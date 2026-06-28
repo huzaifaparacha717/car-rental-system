@@ -1,0 +1,58 @@
+﻿@using car_rental_system.Models
+@model IEnumerable<car>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary fw-bold">Premium Car Fleet</h2>
+        <span class="badge bg-primary p-2">Select Your Ride</span>
+    </div>
+
+    <div class="row">
+        @foreach (var car in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow border-0 overflow-hidden">
+                    <img src="~/images/@(car.Name).jpg"
+                         class="card-img-top"
+                         style="height: 200px; object-fit: cover;"
+                         alt="@car.Name">
+                    
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title fw-bold">@car.Name</h5>
+                            <span class="badge bg-info text-dark">@car.Model</span>
+                        </div>
+                        
+                        <p class="card-text text-muted small">Available for daily rental with premium service.</p>
+                        
+                        <div class="bg-light p-2 rounded mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span class="small">Without Fuel:</span>
+                                <span class="fw-bold text-danger">Rs. @car.PriceWithoutFuel</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="small">With Fuel:</span>
+                                <span class="fw-bold text-success">Rs. @car.PriceWithFuel</span>
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            @if (!car.IsBooked)
+                            {
+                                <a asp-action="Book" asp-route-id="@car.Id" class="btn btn-primary">Book This Car</a>
+                            }
+                            else
+                            {
+                                <button class="btn btn-secondary" disabled>Currently Booked</button>
+                            }
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer bg-white border-0 text-center">
+                        <small class="text-muted">Driver: Rs. @car.DriverCharges / day</small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

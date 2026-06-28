@@ -1,0 +1,54 @@
+@model car_rental_system.Models.car
+@{
+    ViewData["Title"] = "Edit car";
+}
+
+<h1 class="h3 mb-4">Edit car</h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Model" class="form-label"></label>
+                        <input asp-for="Model" class="form-control" />
+                        <span asp-validation-for="Model" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PriceWithoutFuel" class="form-label"></label>
+                        <input asp-for="PriceWithoutFuel" class="form-control" />
+                        <span asp-validation-for="PriceWithoutFuel" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PriceWithFuel" class="form-label"></label>
+                        <input asp-for="PriceWithFuel" class="form-control" />
+                        <span asp-validation-for="PriceWithFuel" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="DriverCharges" class="form-label"></label>
+                        <input asp-for="DriverCharges" class="form-control" />
+                        <span asp-validation-for="DriverCharges" class="text-danger small"></span>
+                    </div>
+                    <div class="form-check mb-4">
+                        <input asp-for="IsBooked" class="form-check-input" />
+                        <label asp-for="IsBooked" class="form-check-label"></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-action="Cars" class="btn btn-outline-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
